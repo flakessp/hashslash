@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+}
+
+.post {
+  max-width: 300px;
+}
+
+.post-big h1{
+  font-size: 4em;
+}
+
+.post-middle h1{
+  font-size: 3em;
+}
+
+.post-small h1{
+  font-size: 2em;
+}
