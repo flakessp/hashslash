@@ -21,3 +21,10 @@
 .post-small h1{
   font-size: 2em;
 }
+
+.overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+}

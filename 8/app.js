@@ -1,35 +1,10 @@
-// строка
-let name = 'IVAN';
+// загрузить данные с адреса(в кавычках) и выполнить функцию (после запятой)
+$.get( "https://esh-lesson8.firebaseio.com/posts.json", function( data ) {
+  // загруженный объект теперь доступен под именем data (имя произвольное и указывается в скобках)
+  // добавить в .post h1 свойство title из загруженного объекта
+  $('.post h1').html(data.title);
+  $('.post p').html(data.content);
 
-// число
-let age = 24; 
-
-// функция
-let sayHello = function () {
-  console.log('hello');
-}
-// запись выше тоже самое, что и
-function sayHello () {
-  console.log('hello');
-}
-
-// структуры данных
-// массив
-let names = [name, 'PAVEL', 'JOHN'];
-names[0]; // IVAN
-names[1]; // PAVEL
-
-// объект
-let book = {
-  name: 'Grid Systems in Graphic Design', 
-  author: 'Josef Müller-Brockmann',
-  year: 1981,
-  tags: ['Typography', 'Grid'],
-  showCover: function() {
-  }
-}
-book.name // Grid Systems in Graphic Design
-book.year // 1981
-// альтернативный способ обращения к свойствам объекта
-book['name'] // Grid Systems in Graphic Design
-book.showCover() // вызов функции в объекте
+  // убрать заглушку когда данные загрузятся
+  $('.overlay').fadeOut('slow');
+});
