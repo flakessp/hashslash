@@ -43,10 +43,14 @@ inputSvgSetting.on('input', function(){
 
 buttonSave.click(function(){
   let data = {
-    name: 'hello'
+    font: inputFontName.val(),
+    fontSize: inputFontSize.val(), 
+    letterSpacing: inputLetterSpacing.val(),
+    color: inputFontColor.val(),
+    baseFrequency: inputSvgSetting.val()
   }
 
-  $.post('https://esh-lesson8.firebaseio.com/typography.json',
+  $.post('https://esh-lesson8.firebaseio.com/esh.json',
     JSON.stringify(data),
     function () {
       alert("success");
