@@ -2,6 +2,7 @@ let inputFontName = $('#input-font-name');
 let inputFontSize = $('#input-font-size');
 let inputLetterSpacing = $('#input-letter-spacing');
 let inputFontColor = $('#input-font-color');
+let inputSvg = $('#input-svg-setting');
 
 let container = $('.container');
 
