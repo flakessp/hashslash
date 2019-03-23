@@ -8,6 +8,12 @@ let inputSvgSetting = $('#input-svg-setting');
 //элементы которые мы меняем
 let container = $('.container');
 let svgFilter = $('feTurbulence');
+let buttonHide = $('#js-settings');
+let controlsContainer = $('.controls');
+
+buttonHide.click(function() {
+  controlsContainer.toggle();
+})
 
 inputFontName.on('input', function(){
   let value = $(this).val();

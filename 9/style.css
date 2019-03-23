@@ -22,3 +22,13 @@ body {
   transition: all .1s;
   filter: url('#liquify');
 }
+
+.container:focus {
+  outline: none;
+}
+
+.settings {
+  position: fixed;
+  left: 50px;
+  bottom: 50px;
+}
