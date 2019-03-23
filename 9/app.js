@@ -10,6 +10,7 @@ let container = $('.container');
 let svgFilter = $('feTurbulence');
 let buttonHide = $('#js-settings');
 let controlsContainer = $('.controls');
+let buttonSave = $('#js-save');
 
 buttonHide.click(function() {
   controlsContainer.toggle();
@@ -38,4 +39,17 @@ inputFontColor.on('input', function(){
 inputSvgSetting.on('input', function(){
   let value = $(this).val()/2000;
   svgFilter.attr('baseFrequency', value);
+})
+
+buttonSave.click(function(){
+  let data = {
+    name: 'hello'
+  }
+
+  $.post('https://esh-lesson8.firebaseio.com/typography.json',
+    JSON.stringify(data),
+    function () {
+      alert("success");
+    }
+  );
 })
