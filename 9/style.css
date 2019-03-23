@@ -1,0 +1,20 @@
+body {
+  height: 100%;
+  background: black;
+  color: white;
+}
+.controls {
+  width: 500px;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}

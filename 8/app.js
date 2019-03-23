@@ -12,6 +12,7 @@ $.get( "https://esh-lesson8.firebaseio.com/posts.json", function( data ) {
   // записывает параграф
   content += `<p>${data.content}</p>`;
   // закрываем тег div с классом post
+  content += `<img src=${data.img}/>`;
   content += '</div>';
   
 
