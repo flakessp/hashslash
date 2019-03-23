@@ -1,9 +1,11 @@
+//инпуты
 let inputFontName = $('#input-font-name');
 let inputFontSize = $('#input-font-size');
 let inputLetterSpacing = $('#input-letter-spacing');
 let inputFontColor = $('#input-font-color');
 let inputSvgSetting = $('#input-svg-setting');
 
+//элементы которые мы меняем
 let container = $('.container');
 let svgFilter = $('feTurbulence');
 
@@ -28,6 +30,6 @@ inputFontColor.on('input', function(){
 })
 
 inputSvgSetting.on('input', function(){
-  let value = $(this).val();
+  let value = $(this).val()/2000;
   svgFilter.attr('baseFrequency', value);
 })

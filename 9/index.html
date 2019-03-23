@@ -15,16 +15,16 @@
       <input id="input-font-name" class="input" type="text">
       <input id="input-font-size" class="input" type="number" step="10">
       <input id="input-letter-spacing" class="input" type="range" min="0" max="100" value="10">
-      <input id="input-svg-setting" class="input" type="range" min="0" max="100" value="10">
+      <input id="input-svg-setting" class="input" type="range" min="0" max="30" value="0">
       <input type="color" id="input-font-color">
   </div>
 
-  <div class="container">LOVE DEATH & ROBOTS</div>
+  <div class="container" contenteditable="true">LOVE DEATH & ROBOTS</div>
   <svg>
       <filter id="liquify">
         <feTurbulence
           id="settings"
-          baseFrequency="0.01"
+          baseFrequency="0.02"
           numOctaves="2"
           result="wrap"
           type="fractalNoise"
