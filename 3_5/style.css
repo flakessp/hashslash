@@ -1,0 +1,66 @@
+/* CSS ПЕРЕМЕННЫЕ 
+https://developer.mozilla.org/ru/docs/Web/CSS/Using_CSS_custom_properties
+
+CALC
+https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+
+*/
+@font-face {
+    font-family: 'Inter';
+    src: url(Inter.var.woff2);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    --bg-color: blue;
+    --text-color: white;
+    background: var(--bg-color);
+    color: var(--text-color);
+    height: 100%;
+    font-family: Inter, 'Arial';
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: 40px;
+    height: 100%;
+}
+
+.border {
+    position: absolute;
+    padding: 40px;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    border: 1px solid var(--text-color);
+}
+
+.one, .two, .three {
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 100%;
+}
+
+.one {
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: 8px;
+}
+
+
+svg path{
+    fill: var(--bg-color);
+    stroke: var(--text-color);
+}
