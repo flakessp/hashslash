@@ -30,8 +30,9 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-auto-rows: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-auto-rows: 1fr;
     height: 100%;
 }
 
@@ -43,6 +44,7 @@ body {
     width: calc(100% - 40px);
     height: calc(100% - 40px);
     border: 1px solid var(--text-color);
+    pointer-events: none;
 }
 
 .one, .two, .three {
@@ -53,14 +55,48 @@ body {
 
 .one {
     text-transform: uppercase;
+    grid-column: 1/3;
+}
+
+.two {
+    grid-row: 5;
+    grid-column: span 4;
+    text-align: right;
+}
+
+.three {
+    grid-row: 7;
+}
+
+.color-select {
+
 }
 
 .description {
     font-size: 8px;
 }
 
+.img-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
-svg path{
+.earth {
+    animation: rotate 200s infinite linear;
+}
+
+.earth path{
     fill: var(--bg-color);
     stroke: var(--text-color);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
