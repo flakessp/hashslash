@@ -8,6 +8,6 @@ const context = canvasTag.getContext('2d')
 const image = document.createElement('img')
 image.src = 'img.jpg'
 
-document.addEventListener('mousemove', () => {
-    context.drawImage(image, 100, 100, 600, 400);
+document.addEventListener('mousemove', (event) => {
+    context.drawImage(image, event.pageX, event.pageY, 600, 400)
 })
