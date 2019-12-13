@@ -5,11 +5,12 @@ canvasTag.height = window.innerHeight
 
 const context = canvasTag.getContext('2d')
 
-const image = document.createElement('img')
-image.src = 'img.jpg'
+let aimX = null,
+    aimY = null,
+    currentX = null,
+    currentY = null;
 
 let i = 0
-
 // get these from api? 
 const images = ['img.jpg', 'img2.jpg'].map( src => {
     const image = document.createElement('img')
@@ -18,7 +19,13 @@ const images = ['img.jpg', 'img2.jpg'].map( src => {
 })
 
 document.addEventListener('mousemove', event => {
-    context.drawImage(images[i], event.pageX-300, event.pageY-200, 600, 400)
+    aimX = event.pageX
+    aimY = event.pageY
+
+    if (currentX == null) {
+        currentX = event.pageX
+        currentY = event.pageY
+    }
 })
 
 canvasTag.addEventListener('click', () => {
@@ -27,3 +34,14 @@ canvasTag.addEventListener('click', () => {
         i = 0;
     }
 })
+
+const draw = () => {
+    if (currentX) {
+        context.drawImage(images[i], currentX-150, currentY-100, 300, 200)
+    }
+    currentX = currentX + (aimX - currentX) * 0.1
+    currentY = currentY + (aimY - currentY) * 0.1
+    requestAnimationFrame(draw)
+}
+
+draw()
