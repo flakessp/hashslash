@@ -5,16 +5,18 @@ CALC
 https://developer.mozilla.org/en-US/docs/Web/CSS/calc
 
 */
-@font-face {
-    font-family: 'Inter';
-    src: url(Inter.var.woff2);
-}
 
 * {
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Inter';
+    src: url(assets/Inter.var.woff2);
+}
+
 html {
+    --base-size: 8px;
     --bg-color: blue;
     --text-color: white;
     background: var(--bg-color);
@@ -26,10 +28,32 @@ html {
 body {
     margin: 0;
     height: 100%;
+    perspective: 200px;
+    transform-style: preserve-3d;
+}
+
+.color-select {
+    grid-column-start: 4;
+    display: flex;
+    justify-content: end;
+}
+.white, .black {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: var(--base-size);
+}
+.white {
+    background: white;
+}
+.black {
+    background: black;
 }
 
 .container {
     display: grid;
+    padding: calc(var(--base-size) * 5);
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(10, 1fr);
     grid-auto-rows: 1fr;
@@ -38,17 +62,19 @@ body {
 
 .border {
     position: absolute;
-    padding: 40px;
+    padding: calc(var(--base-size) * 5);
     top: 20px;
     left: 20px;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
+    width: calc(100% - calc(var(--base-size) * 5));
+    height: calc(100% - calc(var(--base-size) * 5));
     border: 1px solid var(--text-color);
     pointer-events: none;
+    transform: rotateY(20deg);
+    animation: rotate3d 200s infinite alternate linear;
 }
 
 .one, .two, .three {
-    font-size: 80px;
+    font-size: calc(var(--base-size) * 10);
     font-weight: bold;
     line-height: 100%;
 }
@@ -56,6 +82,21 @@ body {
 .one {
     text-transform: uppercase;
     grid-column: 1/3;
+    position: relative;
+}
+.one::before {
+    display: none;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: red;
+}
+
+.one:hover::before {
+    display: block;
 }
 
 .two {
@@ -68,8 +109,10 @@ body {
     grid-row: 7;
 }
 
-.color-select {
-
+.description {
+    border: 1px solid white;
+    grid-column: 1/5;
+    grid-row-start: 10;
 }
 
 .description {
@@ -98,5 +141,25 @@ body {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate3d {
+    from {
+        transform: rotateY(0deg)
+    }
+    to {
+        transform: rotateY(360deg)
+    }
+}
+
+@media (max-width: 400px) {
+    html {
+        background: red;
+        --base-size: 5px;
+    }
+
+    .earth {
+        width: 300px;
     }
 }

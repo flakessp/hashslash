@@ -1,15 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 500px));
+    grid-gap: 20px;
+    grid-auto-rows: 200px;
+}
 .zone {
-    cursor:pointer;
+    /* border: 10px solid blue; */
+    cursor: url(cursor.jpg), auto;
     display:inline-block;
     text-align: center;
     font-size:10em;
-    border-radius:4px;
-    border:1px solid #bbb;
+    /* border-radius:4px; */
+    /* border-bottom:1px solid blue; */
     transition: all 0.3s linear;
 }
 
 .zone:hover {
-    box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    box-shadow:rgba(248, 248, 248, 0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
 }
 
 .green{
