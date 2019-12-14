@@ -14,6 +14,7 @@ let img = document.createElement('img');
 img.src = 'image.png';
 let ctx = canvas.getContext('2d');
 
-function draw() {
-    ctx.drawImage(img, 100, 100, 600, 400);
-}
+
+document.addEventListener('mousemove', (e) => {
+    ctx.drawImage(img, e.pageX-300, e.pageY-200, 600, 400);
+})
