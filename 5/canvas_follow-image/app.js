@@ -38,7 +38,7 @@ const draw = () => {
     if (currentX) {
         ctx.drawImage(images[i], currentX-images[i].width*0.5/2, currentY-images[i].height*0.5/2, images[i].width*0.5, images[i].height*0.5)
     }
-    currentX = currentX + (aimX - currentX) * 0.1
-    currentY = currentY + (aimY - currentY) * 0.1
+    currentX = currentX + (aimX - currentX) * 0.5
+    currentY = currentY + (aimY - currentY) * 0.5
     requestAnimationFrame(draw)
 }
