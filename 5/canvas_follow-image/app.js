@@ -11,12 +11,18 @@ let aimX = null,
     currentY = null;
 
 let i = 0
-// get these from api? 
-const images = ['notepad.png', 'img2.jpg'].map( src => {
-    const image = document.createElement('img')
-    image.src = src
-    return image
-})
+let images;
+
+fetch('https://test-7f93b.firebaseio.com/name.json')
+  .then(response => response.json())
+  .then(result => {
+      images = result.map( src => {
+        const image = document.createElement('img')
+        image.src = src
+        return image
+      })
+      draw();
+    })
 
 document.addEventListener('mousemove', event => {
     aimX = event.pageX
@@ -36,10 +42,3 @@ const draw = () => {
     currentY = currentY + (aimY - currentY) * 0.1
     requestAnimationFrame(draw)
 }
-draw()
-
-const link = document.querySelector('.link');
-link.addEventListener('click', function(ev) {
-    link.href = canvasTag.toDataURL();
-    link.download = "mypainting.png";
-}, false);
