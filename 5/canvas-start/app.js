@@ -1,4 +1,13 @@
-let canvas = document.querySelector('canvas');
+let canvas      = document.querySelector('canvas'),
+    i           = 0,
+    aimX        = null,
+    aimY        = null,
+    currentX    = null,
+    currentY    = null,
+    speed       = 0.01,
+    images      = null,
+
+    ctx = canvas.getContext('2d');
 
 window.addEventListener('resize', setCanvasSize);
 window.addEventListener('load', setCanvasSize);
@@ -8,21 +17,20 @@ function setCanvasSize(event) {
     canvas.height = window.innerHeight;
 }
 
-let ctx = canvas.getContext('2d');
-let i = 0;
 
-// массив с картинками
-let images = ['image.png', 'rose.png'].map( src => {
-    // создание изображения 
-    let img = document.createElement('img');
-    img.src = src;
-    return img;
-})
+fetch('https://test-7f93b.firebaseio.com/images.json')
+    .then(response => response.json())
+    .then(result => {
+        images = result.map( src => {
+            let img = document.createElement('img');
+            img.src = src;
+            return img;
+        });
+        draw();
+    })
 
-document.addEventListener('mousemove', (e) => {
-    img = images[i];
-    ctx.drawImage(img, e.pageX-img.width/4, e.pageY-img.height/4, img.width/2, img.height/2);
-})
+window.addEventListener('resize', setCanvasSize);
+window.addEventListener('load', setCanvasSize);
 
 canvas.addEventListener('click', () => {
     i++;
@@ -30,3 +38,14 @@ canvas.addEventListener('click', () => {
         i = 0;
     }
 })
+
+function draw() {
+    // попробуйте поменять размер 
+    if (currentX) {
+        ctx.drawImage(img, currentX-img.width/4, currentY-img.height/4, img.width/2, img.height/2);
+    }
+    currentX = currentX + (aimX - currentX) * speed;
+    currentY = currentY + (aimY - currentY) * speed;
+    img = images[i];
+    requestAnimationFrame(draw);
+}
